@@ -25,7 +25,7 @@
 [![GitHub license](https://img.shields.io/github/license/sassansh/Compare-Ingredients?style=for-the-badge)](https://github.com/sassansh/Compare-Ingredients/blob/master/LICENSE)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[![Site preview](/images/screenshot.png)](https://sassanshokoohi.ca/)
+[![Site preview](/images/screenshot.jpg)](https://sassanshokoohi.ca/Compare-Ingredients/)
 
 ## Table of Contents
 
