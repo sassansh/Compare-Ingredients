@@ -1,7 +1,14 @@
 {
   "name": "compare-ingredients",
+  "description": "React app to compare list of ingredients.",
+  "homepage": "https://sassanshokoohi.ca/Compare-Ingredients",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Sassan Shokoohi",
+    "email": "sassan_shokoohi@me.com",
+    "url": "https://github.com/sassansh"
+  },
   "dependencies": {
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",
@@ -16,6 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
