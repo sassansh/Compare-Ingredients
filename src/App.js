@@ -1,18 +1,24 @@
-import { Box, Button, Heading, Textarea, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  ListItem,
+  Textarea,
+  UnorderedList,
+  useColorMode,
+} from "@chakra-ui/react";
 
 import { useState } from "react";
 
 function App() {
-  // state for first product
   let [product1, setProduct1] = useState("");
-  // state for second product
   let [product2, setProduct2] = useState("");
+  let [commonIngredients, setCommonIngredients] = useState([]);
+  let [uncommonIngredients, setUncommonIngredients] = useState([]);
   const { colorMode, toggleColorMode } = useColorMode();
 
   const handleProductChange = (e) => {
-    //get id of input
     let inputId = e.target.id;
-    //get value of input
     if (inputId === "product1") {
       setProduct1(e.target.value);
     } else if (inputId === "product2") {
@@ -21,31 +27,30 @@ function App() {
   };
 
   const compareProducts = () => {
-    // convert string to array separated by commas
     let product1Array = product1.split(",");
     let product2Array = product2.split(",");
-    // remove whitespace from each element
+
     product1Array = product1Array.map((item) => item.trim());
     product2Array = product2Array.map((item) => item.trim());
-    // remove empty strings
+
     product1Array = product1Array.filter((item) => item !== "");
     product2Array = product2Array.filter((item) => item !== "");
-    // remove duplicates
+
     product1Array = [...new Set(product1Array)];
     product2Array = [...new Set(product2Array)];
-    // compare arrays
+
     let commonIngredients = product1Array.filter((item) =>
       product2Array.includes(item)
     );
-    console.log("common:", commonIngredients);
-    // uncommon ingredients
+    setCommonIngredients(commonIngredients);
+
     let uncommonIngredients = product1Array.filter(
       (item) => !product2Array.includes(item)
     );
     uncommonIngredients = uncommonIngredients.concat(
       product2Array.filter((item) => !product1Array.includes(item))
     );
-    console.log("uncommon:", uncommonIngredients);
+    setUncommonIngredients(uncommonIngredients);
   };
 
   return (
@@ -78,6 +83,26 @@ function App() {
       <Button position="absolute" top={0} right={3} onClick={toggleColorMode}>
         {colorMode === "light" ? "🌙" : "☀"}
       </Button>
+      {(commonIngredients.length > 0 || uncommonIngredients.length > 0) && (
+        <Box display="flex" mt={3}>
+          <Box width="50%">
+            <Heading size="md">Common Ingredients</Heading>
+            <UnorderedList>
+              {commonIngredients.map((item, index) => (
+                <ListItem key={index}>{item}</ListItem>
+              ))}
+            </UnorderedList>
+          </Box>
+          <Box width="50%">
+            <Heading size="md">Uncommon Ingredients</Heading>
+            <UnorderedList>
+              {uncommonIngredients.map((item, index) => (
+                <ListItem key={index}>{item}</ListItem>
+              ))}
+            </UnorderedList>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }
