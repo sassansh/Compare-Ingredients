@@ -75,7 +75,7 @@ function App() {
       <Button colorScheme="teal" mt={3} size="md" onClick={compareProducts}>
         Compare
       </Button>
-      <Button mt={3} mx={3} onClick={toggleColorMode}>
+      <Button position="absolute" top={0} right={3} onClick={toggleColorMode}>
         {colorMode === "light" ? "🌙" : "☀"}
       </Button>
     </Box>
